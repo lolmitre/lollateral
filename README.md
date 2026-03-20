@@ -34,9 +34,6 @@ open lollateral.html        # macOS
 xdg-open lollateral.html    # Linux
 start lollateral.html       # Windows
 ```
-
-Or access the hosted version: **[your-username.github.io/lollateral](https://your-username.github.io/lollateral)**
-
 ---
 
 ## 📊 Coverage
