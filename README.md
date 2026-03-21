@@ -21,7 +21,7 @@
 - Telemetry source mapping (Event IDs, Sysmon, CloudTrail, auditd, EDR)
 - Interactive D3FEND defensive technique diagrams per ATT&CK technique
 
-**No server, no dependencies, no internet required.** Open `lollateral.html` in any modern browser.
+**No server, no dependencies, no internet required.** Open `index.html` in any modern browser.
 
 ---
 
@@ -30,9 +30,9 @@
 ```bash
 git clone https://github.com/lolmitre/lollateral.git
 cd lollateral
-open lollateral.html        # macOS
-xdg-open lollateral.html    # Linux
-start lollateral.html       # Windows
+open index.html        # macOS
+xdg-open index.html    # Linux
+start index.html       # Windows
 ```
 ---
 
@@ -126,7 +126,7 @@ Nodes are colour-coded by tactic (Eviction/Hardening/Detection/Restore/Policy), 
 ##  Architecture
 
 ```
-lollateral.html          ← Single self-contained file (266 KB)
+index.html          ← Single self-contained file (266 KB)
 │
 ├── CSS                  ← Dark theme, IBM Plex Sans + Fira Code fonts
 │
