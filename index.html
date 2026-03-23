@@ -6,413 +6,289 @@
 <title>LOLLATERAL — Lateral Movement Reference</title>
 <style>
 :root{
-  --bg:#0d0d0f;--bg2:#131316;--bg3:#1a1a1e;--bg4:#222228;
-  --border:#2e2e38;--border2:#3a3a48;
-  --text:#e8e8f0;--text2:#9898b0;--text3:#5a5a70;
-  --purple:#a78bfa;--purple-bg:#1e1730;--purple-border:#4c3a8a;
-  --teal:#34d399;--teal-bg:#0d2d22;--teal-border:#1a5c44;
-  --blue:#60a5fa;--blue-bg:#0d1f35;--blue-border:#1a3d6e;
-  --amber:#fbbf24;--amber-bg:#2a1f08;--amber-border:#5a4010;
-  --coral:#f87171;--coral-bg:#2a0f0f;--coral-border:#5a1a1a;
-  --green:#86efac;--green-bg:#0d2a18;--green-border:#1a5230;
-  --pink:#f472b6;--pink-bg:#2a0f20;--pink-border:#5a1a40;
-  --gray:#94a3b8;--gray-bg:#1a1a22;--gray-border:#2e2e40;
-  --red:#fc8181;--red-bg:#2a0d0d;--red-border:#5a1a1a;
+  --bg:#f1f3f8;--bg2:#ffffff;--bg3:#f7f8fb;--bg4:#eef0f6;
+  --border:#e2e6f0;--border2:#c8cfe0;
+  --shadow-card:0 1px 4px rgba(30,40,80,.09);
+  --shadow-hover:0 4px 20px rgba(30,40,80,.15);
+  --text:#0f172a;--text2:#475569;--text3:#94a3b8;
+  --blue:#2563eb;--blue-bg:#eff6ff;--blue-border:#bfdbfe;
+  --purple:#7c3aed;--purple-bg:#f5f3ff;--purple-border:#ddd6fe;
+  --teal:#0891b2;--teal-bg:#ecfeff;--teal-border:#a5f3fc;
+  --green:#059669;--green-bg:#ecfdf5;--green-border:#a7f3d0;
+  --amber:#d97706;--amber-bg:#fffbeb;--amber-border:#fde68a;
+  --coral:#ea580c;--coral-bg:#fff7ed;--coral-border:#fed7aa;
+  --red:#dc2626;--red-bg:#fef2f2;--red-border:#fecaca;
+  --pink:#db2777;--pink-bg:#fdf2f8;--pink-border:#fbcfe8;
+  --gray:#64748b;--gray-bg:#f8fafc;--gray-border:#e2e8f0;
+  --indigo:#4338ca;--indigo-bg:#eef2ff;--indigo-border:#c7d2fe;
   --mono:'Fira Code','Cascadia Code','Consolas',monospace;
-  --sans:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+  --sans:'IBM Plex Sans','Inter','Segoe UI',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;font-size:14px}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
 
-.header{padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border);background:var(--bg2)}
-.logo{font-size:28px;font-weight:700;letter-spacing:-1px;font-family:var(--mono)}
-.logo .hl{color:var(--purple)}
-.tagline{font-size:13px;color:var(--text2);margin-top:6px}
-.sub-links{margin-top:10px;display:flex;gap:14px}
-.sub-links a{font-size:12px;color:var(--text2);border:1px solid var(--border);padding:3px 10px;border-radius:4px}
-.sub-links a:hover{border-color:var(--border2);color:var(--text);text-decoration:none}
+/* HEADER */
+.header{padding:1.25rem 2rem 1rem;background:var(--bg2);border-bottom:1px solid var(--border);box-shadow:0 1px 2px rgba(30,40,80,.04)}
+.header-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+.logo{font-size:22px;font-weight:800;letter-spacing:-0.5px;font-family:var(--mono);color:var(--text)}
+.logo .hl{color:var(--blue)}
+.logo-sub{font-size:11px;color:var(--text3);font-family:var(--mono);margin-left:6px;font-weight:400}
+.tagline{font-size:12px;color:var(--text2);line-height:1.5;margin-top:2px}
+.sub-links{margin-top:8px;display:flex;gap:7px;flex-wrap:wrap}
+.sub-links a{font-size:11px;color:var(--blue);border:1px solid var(--blue-border);background:var(--blue-bg);padding:2px 9px;border-radius:4px;font-family:var(--mono);transition:all .15s}
+.sub-links a:hover{background:var(--blue);color:#fff;border-color:var(--blue);text-decoration:none}
 
-.controls{
-  padding:1rem 2rem;background:var(--bg2);border-bottom:1px solid var(--border);
-  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
-  position:sticky;top:0;z-index:100;
-}
-input[type=text]{
-  background:var(--bg3);border:1px solid var(--border);color:var(--text);
-  padding:6px 12px;border-radius:4px;font-size:13px;font-family:var(--sans);
-  width:240px;outline:none;
-}
-input[type=text]:focus{border-color:var(--border2)}
-select{
-  background:var(--bg3);border:1px solid var(--border);color:var(--text);
-  padding:6px 12px;border-radius:4px;font-size:13px;font-family:var(--sans);
-  outline:none;cursor:pointer;
-}
-select:focus{border-color:var(--border2)}
-.btn-expand{
-  background:var(--bg3);border:1px solid var(--border);color:var(--text2);
-  padding:6px 12px;border-radius:4px;font-size:13px;cursor:pointer;margin-left:auto;
-}
-.btn-expand:hover{border-color:var(--border2);color:var(--text)}
+/* CONTROLS */
+.controls{padding:.6rem 2rem;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:7px;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 5px rgba(30,40,80,.06)}
+input[type=text]{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 11px;border-radius:6px;font-size:12.5px;font-family:var(--sans);outline:none;transition:border-color .15s,box-shadow .15s}
+input[type=text]::placeholder{color:var(--text3)}
+input[type=text]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1);background:var(--bg2)}
+select{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 11px;border-radius:6px;font-size:12.5px;font-family:var(--sans);outline:none;cursor:pointer}
+select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.search-wide{width:260px}
+.btn-expand{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:6px 14px;border-radius:6px;font-size:12.5px;cursor:pointer;font-weight:500;transition:all .15s}
+.btn-expand:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.controls-right{margin-left:auto;display:flex;gap:7px;align-items:center}
 
-/* APT dropdown */
-.apt-filter-wrap{position:relative}
-.apt-search-input{width:160px!important}
-.apt-dropdown{
-  position:absolute;top:calc(100% + 4px);left:0;z-index:200;
-  background:var(--bg3);border:1px solid var(--border2);border-radius:4px;
-  width:210px;max-height:230px;overflow-y:auto;display:none;
-  box-shadow:0 8px 24px rgba(0,0,0,.5);
-}
-.apt-dropdown.open{display:block}
-.apt-opt{
-  padding:6px 12px;font-size:12px;cursor:pointer;
-  border-bottom:1px solid var(--border);font-family:var(--mono);
-  display:flex;align-items:center;gap:6px;color:var(--text2);
-}
-.apt-opt:last-child{border-bottom:none}
-.apt-opt:hover{background:var(--bg4);color:var(--text)}
-.apt-opt.sel{color:var(--purple)}
-.apt-opt.sel::before{content:'✓';font-size:10px;color:var(--purple)}
-.apt-opt:not(.sel)::before{content:'';display:inline-block;width:10px}
+/* Dropdowns */
+.apt-filter-wrap,.ms-filter-wrap{position:relative}
+.apt-dropdown,.ms-dropdown{position:absolute;top:calc(100% + 5px);left:0;z-index:200;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;min-width:200px;max-height:220px;overflow-y:auto;display:none;box-shadow:0 8px 28px rgba(30,40,80,.18)}
+.apt-dropdown.open,.ms-dropdown.open{display:block}
+.apt-opt,.ms-opt{padding:7px 12px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--border);color:var(--text2);transition:background .1s}
+.apt-opt:last-child,.ms-opt:last-child{border-bottom:none}
+.apt-opt:hover,.ms-opt:hover{background:var(--bg3);color:var(--text)}
+.apt-opt.sel,.ms-opt.sel{color:var(--blue);font-weight:600}
+.apt-opt.sel::before,.ms-opt.sel::before{content:'✓';color:var(--blue);font-size:10px;width:10px}
+.apt-opt:not(.sel)::before,.ms-opt:not(.sel)::before{content:'';display:inline-block;width:10px}
 
-/* Multi-select (nation/sector) */
-.ms-filter-wrap{position:relative}
-.ms-dropdown{
-  position:absolute;top:calc(100% + 4px);left:0;z-index:200;
-  background:var(--bg3);border:1px solid var(--border2);border-radius:4px;
-  width:200px;max-height:220px;overflow-y:auto;display:none;
-  box-shadow:0 8px 24px rgba(0,0,0,.5);
-}
-.ms-dropdown.open{display:block}
-.ms-opt{
-  padding:5px 12px;font-size:12px;cursor:pointer;
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:6px;color:var(--text2);
-}
-.ms-opt:last-child{border-bottom:none}
-.ms-opt:hover{background:var(--bg4);color:var(--text)}
-.ms-opt.sel{color:var(--blue)}
-.ms-opt.sel::before{content:'✓';font-size:10px;color:var(--blue);width:10px}
-.ms-opt:not(.sel)::before{content:'';display:inline-block;width:10px}
+/* Filter chips */
+.active-tags-bar{padding:5px 2rem;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;gap:5px;flex-wrap:wrap;min-height:32px;align-items:center}
+.filter-chip{font-size:11px;font-family:var(--mono);padding:2px 8px;border-radius:20px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;transition:opacity .15s;font-weight:500;border:1px solid}
+.fc-apt{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border)}
+.fc-nation{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border)}
+.fc-sector{background:var(--teal-bg);color:var(--teal);border-color:var(--teal-border)}
+.filter-chip:hover{opacity:.65}
 
-.active-tags-bar{
-  padding:6px 2rem;background:var(--bg2);border-bottom:1px solid var(--border);
-  display:flex;gap:8px;flex-wrap:wrap;min-height:34px;align-items:center;
-}
-.filter-chip{
-  font-size:11px;font-family:var(--mono);padding:3px 8px;border-radius:3px;
-  cursor:pointer;display:inline-flex;align-items:center;gap:4px;
-}
-.fc-apt{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
-.fc-nation{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
-.fc-sector{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)}
-.filter-chip:hover{opacity:.8}
+/* Stats */
+.stats-bar{padding:6px 2rem;font-size:11.5px;color:var(--text3);background:var(--bg3);border-bottom:1px solid var(--border);display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.stats-bar b{color:var(--text2);font-weight:600}
 
-.stats-bar{
-  padding:8px 2rem;font-size:12px;color:var(--text3);
-  background:var(--bg2);border-bottom:1px solid var(--border);
-  display:flex;gap:20px;flex-wrap:wrap;
-}
-.stats-bar b{color:var(--text2)}
+/* ── CARD LIST — single column full-width ── */
+.list{max-width:1100px;margin:0 auto;padding:1.25rem 1.5rem 3rem;display:flex;flex-direction:column;gap:10px}
+@media(max-width:600px){.list{padding:.75rem}}
 
-.list{padding:1rem 2rem 3rem}
+/* ── CARD ── */
+.card{background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--cat-color,#e2e8f0);border-radius:8px;box-shadow:var(--shadow-card);overflow:hidden;transition:box-shadow .2s,border-color .2s}
+.card:hover{box-shadow:var(--shadow-hover)}
+.card.expanded{border-color:var(--blue-border);border-left-color:var(--blue);box-shadow:0 0 0 2px rgba(37,99,235,.1),var(--shadow-hover)}
 
-.card{
-  border:1px solid var(--border);border-radius:6px;background:var(--bg2);
-  margin-bottom:8px;overflow:hidden;transition:border-color .15s;
-}
-.card:hover{border-color:var(--border2)}
-.card.expanded{border-color:var(--border2)}
+/* Category left-border colors */
+.cat-remote{--cat-color:#2563eb}.cat-kerberos{--cat-color:#7c3aed}.cat-cred{--cat-color:#ea580c}
+.cat-session{--cat-color:#d97706}.cat-lolbin{--cat-color:#d97706}.cat-protocol{--cat-color:#0891b2}
+.cat-exploit{--cat-color:#dc2626}.cat-phishing{--cat-color:#db2777}.cat-supply{--cat-color:#059669}
+.cat-cloud{--cat-color:#7c3aed}.cat-tool{--cat-color:#4338ca}.cat-replication{--cat-color:#64748b}
 
-.card-head{
-  padding:12px 16px;cursor:pointer;
-  display:flex;align-items:flex-start;gap:12px;user-select:none;
-}
-.card-title{font-size:14px;font-weight:600;color:var(--text);flex:1;line-height:1.4}
-.card-desc{font-size:12px;color:var(--text2);margin-top:3px;line-height:1.5}
-.card-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
-.chevron{color:var(--text3);font-size:12px;margin-top:3px;transition:transform .2s;flex-shrink:0}
-.expanded .chevron{transform:rotate(180deg)}
+/* ── CARD HEAD ── */
+.card-head{padding:12px 16px 10px;cursor:pointer;user-select:none;display:flex;align-items:flex-start;gap:10px}
+.card-head:hover{background:var(--bg3)}
+.card-head-main{flex:1;min-width:0}
+.card-title-row{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.card-title{font-size:14.5px;font-weight:700;color:var(--text);line-height:1.3}
+.card-id{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--text3);background:var(--bg4);border:1px solid var(--border);padding:1px 7px;border-radius:4px;white-space:nowrap}
+.card-desc{font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:7px}
+.card-meta{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.card-head-right{display:flex;align-items:center;gap:6px;flex-shrink:0;padding-top:2px}
+.chevron{color:var(--text3);font-size:11px;transition:transform .2s;width:20px;height:20px;display:flex;align-items:center;justify-content:center;background:var(--bg4);border:1px solid var(--border);border-radius:4px}
+.expanded .chevron{transform:rotate(180deg);background:var(--blue-bg);border-color:var(--blue-border);color:var(--blue)}
 
-.badge{
-  font-size:11px;padding:2px 7px;border-radius:3px;
-  font-family:var(--mono);font-weight:400;white-space:nowrap;
-}
-.b-purple{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
-.b-teal{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)}
-.b-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
-.b-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
-.b-coral{background:var(--coral-bg);color:var(--coral);border:1px solid var(--coral-border)}
-.b-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
-.b-pink{background:var(--pink-bg);color:var(--pink);border:1px solid var(--pink-border)}
-.b-gray{background:var(--gray-bg);color:var(--gray);border:1px solid var(--gray-border)}
-.b-red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-border)}
+/* ── BADGES ── */
+.badge{font-size:10.5px;padding:1px 7px;border-radius:20px;font-family:var(--mono);font-weight:600;white-space:nowrap;border:1px solid;display:inline-block;line-height:1.6}
+.b-blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border)}
+.b-purple{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border)}
+.b-teal{background:var(--teal-bg);color:var(--teal);border-color:var(--teal-border)}
+.b-green{background:var(--green-bg);color:var(--green);border-color:var(--green-border)}
+.b-amber{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-border)}
+.b-coral{background:var(--coral-bg);color:var(--coral);border-color:var(--coral-border)}
+.b-red{background:var(--red-bg);color:var(--red);border-color:var(--red-border)}
+.b-pink{background:var(--pink-bg);color:var(--pink);border-color:var(--pink-border)}
+.b-gray{background:var(--gray-bg);color:var(--gray);border-color:var(--gray-border)}
+.b-indigo{background:var(--indigo-bg);color:var(--indigo);border-color:var(--indigo-border)}
 
-.card-body{display:none;border-top:1px solid var(--border);padding:16px}
+/* ── CARD BODY ── */
+.card-body{display:none;border-top:1px solid var(--border);background:var(--bg2)}
 .expanded .card-body{display:block}
+.card-body-inner{padding:16px}
 
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+@media(max-width:680px){.grid2{grid-template-columns:1fr}}
 
-.section-label{
-  font-size:10px;font-weight:700;letter-spacing:1px;
-  text-transform:uppercase;color:var(--text3);
-  margin-bottom:8px;font-family:var(--mono);
-}
-.code-block{
-  font-family:var(--mono);font-size:12px;
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:4px;padding:12px;
-  white-space:pre-wrap;word-break:break-all;
-  line-height:1.7;color:#c8d4e8;
-  max-height:300px;overflow-y:auto;
-}
+.section-label{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3);margin-bottom:7px;font-family:var(--mono);display:flex;align-items:center;gap:5px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
 
+/* Code block */
+.code-block{font-family:var(--mono);font-size:11.5px;background:#161b2e;color:#cdd6f4;border:1px solid #252d45;border-radius:6px;padding:12px;white-space:pre-wrap;word-break:break-all;line-height:1.7;max-height:280px;overflow-y:auto}
+.code-block::-webkit-scrollbar{width:5px}
+.code-block::-webkit-scrollbar-track{background:transparent}
+.code-block::-webkit-scrollbar-thumb{background:#353a55;border-radius:3px}
+
+/* IOC list */
 .ioc-list{font-size:12px;font-family:var(--mono);color:var(--text2)}
-.ioc-list div{padding:3px 0;border-bottom:1px solid var(--border);display:flex;gap:8px}
+.ioc-list div{padding:4px 0;border-bottom:1px solid var(--border);display:flex;gap:8px}
 .ioc-list div:last-child{border-bottom:none}
-.ioc-type{color:var(--text3);min-width:70px;font-size:11px}
+.ioc-type{color:var(--text3);min-width:70px;font-size:11px;font-weight:600}
 
-.intel-sep{border-top:1px dashed var(--border);margin:20px 0 16px}
-.intel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-@media(max-width:700px){.intel-grid{grid-template-columns:1fr}}
+/* Intel */
+.intel-sep{border-top:1px dashed var(--border);margin:16px 0 14px}
+.intel-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px}
+@media(max-width:680px){.intel-grid{grid-template-columns:1fr}}
 
 /* APT Table */
 .apt-table{width:100%;border-collapse:collapse;font-size:12px}
 .apt-table tr{border-bottom:1px solid var(--border)}
 .apt-table tr:last-child{border-bottom:none}
-.apt-table td{padding:6px 8px;vertical-align:top;line-height:1.5}
-.apt-name{font-weight:600;color:var(--text);white-space:nowrap;min-width:120px}
-.apt-alias{color:var(--text3);font-size:11px;font-family:var(--mono);display:block;margin-top:2px}
-.apt-nation{font-size:11px;font-family:var(--mono);color:var(--amber);white-space:nowrap;min-width:130px}
-.apt-campaigns{font-size:11px;color:var(--text2);min-width:180px}
-.apt-sectors{font-size:11px;color:var(--teal)}
-.apt-ref-link{font-size:10px;color:var(--blue);font-family:var(--mono);white-space:nowrap}
+.apt-table td{padding:7px 8px;vertical-align:top;line-height:1.5}
+.apt-th td{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);padding:5px 8px;background:var(--bg3);border-bottom:2px solid var(--border)}
+.apt-name{font-weight:700;color:var(--text)}
+.apt-alias{color:var(--text3);font-size:10px;font-family:var(--mono);display:block;margin-top:1px}
+.apt-nation{font-size:11px;font-family:var(--mono);color:var(--amber);font-weight:600;white-space:nowrap}
+.apt-campaigns{font-size:11px;color:var(--text2)}
+.apt-sectors{font-size:11px;color:var(--teal);font-weight:500}
+.apt-ref-link{font-size:10.5px;color:var(--blue);font-family:var(--mono)}
 .apt-ref-link:hover{text-decoration:underline}
-.apt-th td{font-size:10px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);padding:4px 8px;background:var(--bg3)}
+.apt-timeline{font-size:10.5px;font-family:var(--mono);color:var(--text3);margin-top:2px;display:flex;gap:8px}
+.apt-fs{color:var(--teal);font-weight:600}.apt-ls{color:var(--amber);font-weight:600}
+.apt-victims{font-size:11px;color:var(--text2);font-style:italic;display:block;margin-top:2px;line-height:1.4}
+.apt-countries{margin-top:4px;display:flex;flex-wrap:wrap;gap:3px}
+.apt-ctry{font-size:10px;font-family:var(--mono);padding:1px 6px;border-radius:10px;background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
+.apt-pm{margin-top:5px;display:flex;flex-wrap:wrap;gap:4px}
+.apt-pm-link{font-size:10px;font-family:var(--mono);color:var(--purple);padding:1px 7px;border-radius:10px;background:var(--purple-bg);border:1px solid var(--purple-border)}
+.apt-pm-link:hover{background:var(--purple);color:#fff;text-decoration:none}
 
-/* TI items */
-.ti-item{display:flex;gap:8px;padding:4px 0;border-bottom:1px solid var(--border);font-size:12px}
+/* TI / Rule items */
+.ti-item{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px}
 .ti-item:last-child{border-bottom:none}
-.ti-src{min-width:110px;font-size:11px;font-family:var(--mono);color:var(--purple);flex-shrink:0}
+.ti-src{min-width:105px;font-size:11px;font-family:var(--mono);color:var(--purple);flex-shrink:0;font-weight:600}
 .ti-text{color:var(--text2);line-height:1.5}
-
-/* Rule items */
 .rule-item{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);align-items:baseline;font-size:12px}
 .rule-item:last-child{border-bottom:none}
-.rule-src{min-width:90px;font-size:10px;font-family:var(--mono);padding:2px 6px;border-radius:3px;flex-shrink:0;text-align:center}
-.src-sigma{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
-.src-elastic{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
-.src-splunk{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
-.src-sentinel{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
-.src-car{background:var(--pink-bg);color:var(--pink);border:1px solid var(--pink-border)}
-.src-d3fend{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)}
-.src-attck{background:var(--coral-bg);color:var(--coral);border:1px solid var(--coral-border)}
-.rule-link{color:var(--blue);flex:1}
+.rule-src{min-width:76px;font-size:10px;font-family:var(--mono);padding:2px 7px;border-radius:10px;flex-shrink:0;text-align:center;font-weight:600;border:1px solid}
+.src-sigma{background:var(--purple-bg);color:var(--purple);border-color:var(--purple-border)}
+.src-elastic{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border)}
+.src-splunk{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-border)}
+.src-sentinel{background:var(--green-bg);color:var(--green);border-color:var(--green-border)}
+.src-car{background:var(--pink-bg);color:var(--pink);border-color:var(--pink-border)}
+.src-d3fend{background:var(--teal-bg);color:var(--teal);border-color:var(--teal-border)}
+.src-attck{background:var(--coral-bg);color:var(--coral);border-color:var(--coral-border)}
+.rule-link{color:var(--blue);flex:1;font-weight:500}
 .rule-link:hover{text-decoration:underline}
-.rule-note{color:var(--text3);font-size:11px;font-family:var(--mono);display:block;margin-top:1px}
+.rule-note{color:var(--text3);font-size:10.5px;font-family:var(--mono);display:block;margin-top:1px}
 
-/* Merged Telemetry + Detection table */
+/* Telemetry+Detection table */
 .teldet-table{width:100%;border-collapse:collapse;font-size:12px}
 .teldet-table tr{border-bottom:1px solid var(--border)}
 .teldet-table tr:last-child{border-bottom:none}
 .teldet-table td{padding:6px 8px;vertical-align:top;line-height:1.5}
-.teldet-th td{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);padding:4px 8px;background:var(--bg3)}
-.td-src{font-family:var(--mono);font-size:11px;color:var(--amber);white-space:nowrap;min-width:155px;font-weight:600}
-.td-ids{font-family:var(--mono);font-size:11px;color:var(--purple);min-width:130px}
+.teldet-th td{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);padding:5px 8px;background:var(--bg3);border-bottom:2px solid var(--border)}
+.td-src{font-family:var(--mono);font-size:11px;color:var(--amber);white-space:nowrap;min-width:130px;font-weight:600}
+.td-ids{font-family:var(--mono);font-size:11px;color:var(--purple);min-width:110px}
 .td-pattern{font-size:12px;color:var(--text2)}
-.td-sev{white-space:nowrap;font-family:var(--mono);font-size:11px;min-width:58px;text-align:right}
-.hi-critical{color:var(--red)}
-.hi-high{color:var(--coral)}
-.hi-med{color:var(--amber)}
-.hi-low{color:var(--text2)}
+.td-sev{white-space:nowrap;font-family:var(--mono);font-size:11px;min-width:55px;text-align:right;font-weight:700}
+.hi-critical{color:var(--red)}.hi-high{color:var(--coral)}.hi-med{color:var(--amber)}.hi-low{color:var(--text3)}
 
-/* D3FEND */
-.d3-list{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+/* D3FEND rows */
+.d3-list{display:flex;flex-direction:column}
 .d3-row{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px}
 .d3-row:last-child{border-bottom:none}
-.d3-type{font-size:10px;font-family:var(--mono);padding:2px 6px;border-radius:3px;flex-shrink:0;text-align:center;min-width:70px}
-.d3-harden{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)}
-.d3-detect{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
+.d3-type{font-size:10px;font-family:var(--mono);padding:2px 8px;border-radius:10px;flex-shrink:0;text-align:center;min-width:58px;font-weight:600;border:1px solid}
+.d3-detect{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border)}
+.d3-harden{background:var(--teal-bg);color:var(--teal);border-color:var(--teal-border)}
 .d3-desc{color:var(--text2);line-height:1.5}
 
-.footer-bar{
-  margin-top:16px;padding-top:12px;border-top:1px solid var(--border);
-  display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--text3);
-  font-family:var(--mono);
-}
-.footer-bar span b{color:var(--text2)}
-.no-results{text-align:center;padding:4rem 2rem;color:var(--text3);font-size:14px}
-
-/* APT enriched table */
-.apt-timeline{font-size:11px;font-family:var(--mono);color:var(--text3);margin-top:3px;display:flex;gap:10px}
-.apt-fs{color:var(--teal)}.apt-ls{color:var(--amber)}
-.apt-victims{font-size:11px;color:var(--text3);font-style:italic;display:block;margin-top:2px;line-height:1.4}
-.apt-countries{margin-top:4px;display:flex;flex-wrap:wrap;gap:3px}
-.apt-ctry{font-size:10px;font-family:var(--mono);padding:1px 5px;border-radius:2px;
-  background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border);white-space:nowrap}
-.apt-pm{margin-top:5px;display:flex;flex-wrap:wrap;gap:4px}
-.apt-pm-link{font-size:10px;font-family:var(--mono);color:var(--purple);display:inline-block;
-  padding:1px 6px;border-radius:2px;background:var(--purple-bg);border:1px solid var(--purple-border);white-space:nowrap}
-.apt-pm-link:hover{opacity:.8;text-decoration:none}
-/* D3FEND detect type */
-.d3-detect{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
-.d3-evict{background:var(--coral-bg);color:var(--coral);border:1px solid var(--coral-border)}
-
-
-
-/* APT enriched table */
-.apt-timeline{font-size:11px;font-family:var(--mono);color:var(--text3);margin-top:3px;display:flex;gap:10px}
-.apt-fs{color:var(--teal)}.apt-ls{color:var(--amber)}
-.apt-victims{font-size:11px;color:var(--text3);font-style:italic;display:block;margin-top:2px;line-height:1.4}
-.apt-countries{margin-top:4px;display:flex;flex-wrap:wrap;gap:3px}
-.apt-ctry{font-size:10px;font-family:var(--mono);padding:1px 5px;border-radius:2px;
-  background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border);white-space:nowrap}
-.apt-pm{margin-top:5px;display:flex;flex-wrap:wrap;gap:4px}
-.apt-pm-link{font-size:10px;font-family:var(--mono);color:var(--purple);display:inline-block;
-  padding:1px 6px;border-radius:2px;background:var(--purple-bg);border:1px solid var(--purple-border);white-space:nowrap}
-.apt-pm-link:hover{opacity:.8;text-decoration:none}
-/* D3FEND detect type */
-.d3-detect{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
-.d3-evict{background:var(--coral-bg);color:var(--coral);border:1px solid var(--coral-border)}
-
-
-/* ── D3FEND inline diagram ──────────────────────────────── */
-.d3viz-wrap{
-  margin-top:14px;
-  border:1px solid var(--border);
-  border-radius:6px;
-  overflow:hidden;
-  background:var(--bg);
-}
-.d3viz-toggle{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 12px;
-  cursor:pointer;
-  font-size:11px;font-family:var(--mono);
-  color:var(--text2);
-  background:var(--bg3);
-  border-bottom:1px solid transparent;
-  user-select:none;
-  transition:background .15s;
-}
-.d3viz-toggle:hover{background:var(--bg4,#222228);color:var(--text)}
-.d3viz-toggle .d3v-arr{
-  transition:transform .2s;font-size:10px;color:var(--teal);
-}
+/* D3FEND viz */
+.d3viz-wrap{margin-top:14px;border:1px solid var(--border);border-radius:7px;overflow:hidden;background:var(--bg3)}
+.d3viz-toggle{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 12px;cursor:pointer;font-size:11px;font-family:var(--mono);color:var(--text2);background:var(--bg3);border-bottom:1px solid transparent;user-select:none;transition:background .15s}
+.d3viz-toggle:hover{background:var(--bg4);color:var(--text)}
+.d3viz-toggle .d3v-arr{transition:transform .2s;font-size:10px;color:var(--teal)}
 .d3viz-toggle.open .d3v-arr{transform:rotate(90deg)}
 .d3viz-toggle.open{border-bottom:1px solid var(--border)}
-.d3viz-body{display:none;padding:16px}
+.d3viz-body{display:none;padding:12px 14px 14px;background:var(--bg2)}
 .d3viz-body.open{display:block}
-.d3viz-body svg{width:100%;height:auto;display:block}
-.d3viz-meta{
-  margin-top:8px;
-  font-size:10px;font-family:var(--mono);color:var(--text3);
-  display:flex;gap:12px;flex-wrap:wrap;
-}
-.d3viz-meta a{color:var(--blue)}
-/* SVG node styles inside diagram */
-.d3n{cursor:pointer}
-.d3n rect{transition:opacity .15s,stroke-width .15s}
-.d3n:hover rect{opacity:.85;stroke-width:2}
-.d3n-title{font-family:'IBM Plex Sans',sans-serif;font-size:11px;font-weight:600;fill:#e8e8f0}
-.d3n-id{font-family:'Fira Code',monospace;font-size:9.5px;fill:#9898b0}
-.d3n-tac{font-family:'Fira Code',monospace;font-size:8.5px;fill:#5a5a70}
-.d3n-art rect{fill:#131630;stroke:#818cf8;stroke-width:1.5}
-.d3n-evict rect{fill:#2a0f0f;stroke:#f87171;stroke-width:1}
-.d3n-harden rect{fill:#2a1f08;stroke:#fbbf24;stroke-width:1}
-.d3n-detect rect{fill:#0d1f35;stroke:#60a5fa;stroke-width:1}
-.d3n-restore rect{fill:#0d2a18;stroke:#86efac;stroke-width:1}
-.d3n-model rect{fill:#1e1730;stroke:#a78bfa;stroke-width:1}
-.d3n-art-title{font-family:'Fira Code',monospace;font-size:12px;font-weight:700;fill:#818cf8}
-.d3n-art-sub{font-family:'Fira Code',monospace;font-size:9px;fill:#5a5a70}
-.d3conn{stroke:#2e2e38;fill:none;stroke-width:0.8}
-/* D3FEND inline tooltip */
-.d3-itip{
-  position:fixed;background:var(--bg3);border:1px solid var(--border2);
-  border-radius:5px;padding:8px 12px;font-size:11px;max-width:260px;
-  pointer-events:none;opacity:0;transition:opacity .12s;z-index:9999;
-  line-height:1.55;box-shadow:0 6px 20px rgba(0,0,0,.6);
-}
-.d3-itip.vis{opacity:1}
-.d3-itip b{color:var(--text);display:block;font-size:12px;margin-bottom:3px}
-.d3-itip small{color:var(--text3);font-family:var(--mono)}
-
-
-.d3viz-legend{
-  display:flex;flex-wrap:wrap;gap:8px;
-  margin-top:10px;padding-top:8px;
-  border-top:1px solid var(--border);
-}
-.d3viz-leg{
-  display:flex;align-items:center;gap:5px;
-  font-size:10px;font-family:var(--mono);color:var(--text3);
-}
+.d3viz-body svg{width:100%;height:auto;display:block;overflow:visible}
+.d3viz-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)}
+.d3viz-leg{display:flex;align-items:center;gap:5px;font-size:10px;font-family:var(--mono);color:var(--text3)}
 .d3viz-leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.d3viz-meta{margin-top:4px;font-size:10px;font-family:var(--mono);color:var(--text3);display:flex;gap:10px;flex-wrap:wrap}
+.d3viz-meta a{color:var(--blue)}
+.d3-itip{position:fixed;background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:8px 12px;font-size:11px;max-width:260px;pointer-events:none;opacity:0;transition:opacity .12s;z-index:9999;line-height:1.55;box-shadow:0 8px 24px rgba(30,40,80,.2);font-family:'IBM Plex Sans','Segoe UI',system-ui,sans-serif}
+.d3-itip.vis{opacity:1}
+.d3-itip .tip-title{color:var(--text);font-weight:700;font-size:12px;display:block;margin-bottom:3px}
+.d3-itip .tip-id{color:var(--purple);font-family:var(--mono);font-size:10px;display:block;margin-bottom:4px}
+.d3-itip .tip-desc{color:var(--text2);font-size:11px}
+
+/* Footer bar */
+.footer-bar{padding:10px 16px;border-top:1px solid var(--border);display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--text3);font-family:var(--mono);background:var(--bg3)}
+.footer-bar span b{color:var(--text2);font-weight:600}
+.footer-bar a{color:var(--blue)}
+.no-results{text-align:center;padding:5rem 2rem;color:var(--text3);font-size:14px}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo">LOL<span class="hl">LATERAL</span></div>
-  <div class="tagline">Living Off the Land — Lateral Movement Complete Reference &nbsp;·&nbsp; MITRE ATT&amp;CK TA0008 &nbsp;·&nbsp; All techniques, APT intelligence, detection rules &amp; telemetry</div>
+  <div class="header-top">
+    <span class="logo">LOL<span class="hl">LATERAL</span><span class="logo-sub">— Lateral Movement Reference</span></span>
+  </div>
+  <div class="tagline">MITRE ATT&amp;CK TA0008 &nbsp;·&nbsp; Techniques · APT Intel · Detection Rules · Telemetry · D3FEND Countermeasures</div>
   <div class="sub-links">
-    <a href="https://attack.mitre.org/tactics/TA0008/" target="_blank">↗ ATT&amp;CK TA0008</a>
+    <a href="https://attack.mitre.org/tactics/TA0008/" target="_blank">↗ ATT&CK TA0008</a>
     <a href="https://d3fend.mitre.org" target="_blank">↗ D3FEND</a>
     <a href="https://lolexfil.github.io/" target="_blank">↗ LOLEXFIL</a>
     <a href="https://lolbas-project.github.io/" target="_blank">↗ LOLBAS</a>
     <a href="https://car.mitre.org" target="_blank">↗ MITRE CAR</a>
+    <a href="https://github.com/" target="_blank">↗ GitHub</a>
   </div>
 </div>
 
 <div class="controls">
-  <input type="text" id="search" placeholder="Search techniques, IDs, APT groups, tools...">
+  <input type="text" class="search-wide" id="search" placeholder="🔍  Search techniques, IDs, APT groups, tools…">
   <select id="platFilter">
     <option value="">All platforms</option>
-    <option>Windows</option>
-    <option>Linux</option>
-    <option>macOS</option>
-    <option>Cloud</option>
-    <option>Cross-platform</option>
+    <option>Windows</option><option>Linux</option><option>macOS</option>
+    <option>Cloud</option><option>Cross-platform</option>
   </select>
   <select id="catFilter">
     <option value="">All categories</option>
-    <option>Remote Services</option>
-    <option>Credential Abuse</option>
-    <option>Session Hijacking</option>
-    <option>LOLBin</option>
-    <option>Protocol Abuse</option>
-    <option>Exploitation</option>
-    <option>Phishing</option>
-    <option>Replication</option>
-    <option>Cloud</option>
-    <option>Tool Transfer</option>
-    <option>Supply Chain</option>
-    <option>Kerberos</option>
+    <option>Remote Services</option><option>Credential Abuse</option>
+    <option>Session Hijacking</option><option>LOLBin</option>
+    <option>Protocol Abuse</option><option>Exploitation</option>
+    <option>Phishing</option><option>Replication</option><option>Cloud</option>
+    <option>Tool Transfer</option><option>Supply Chain</option><option>Kerberos</option>
   </select>
   <div class="apt-filter-wrap">
-    <input type="text" class="apt-search-input" id="aptSearch" placeholder="Filter APT group..." autocomplete="off" onfocus="openAptDrop()" oninput="filterAptOpts()">
+    <input type="text" id="aptSearch" style="width:132px" placeholder="APT group…" autocomplete="off" onfocus="openAptDrop()" oninput="filterAptOpts()">
     <div class="apt-dropdown" id="aptDropdown"></div>
   </div>
   <div class="ms-filter-wrap">
-    <input type="text" class="apt-search-input" id="nationSearch" placeholder="Origin nation..." autocomplete="off" onfocus="openMsDrop('nation')" oninput="filterMsOpts('nation')" style="width:145px!important">
+    <input type="text" id="nationSearch" style="width:110px" placeholder="Nation…" autocomplete="off" onfocus="openMsDrop('nation')" oninput="filterMsOpts('nation')">
     <div class="ms-dropdown" id="nationDropdown"></div>
   </div>
   <div class="ms-filter-wrap">
-    <input type="text" class="apt-search-input" id="sectorSearch" placeholder="Target sector..." autocomplete="off" onfocus="openMsDrop('sector')" oninput="filterMsOpts('sector')" style="width:145px!important">
+    <input type="text" id="sectorSearch" style="width:110px" placeholder="Sector…" autocomplete="off" onfocus="openMsDrop('sector')" oninput="filterMsOpts('sector')">
     <div class="ms-dropdown" id="sectorDropdown"></div>
   </div>
-  <button class="btn-expand" id="expandAll">Expand all</button>
+  <div class="controls-right">
+    <button class="btn-expand" id="expandAll">Expand all</button>
+  </div>
 </div>
-<div class="active-tags-bar" id="activeTagsBar"></div>
-
+<div class="active-tags-bar" id="activeTagsBar" style="display:none"></div>
 <div class="stats-bar" id="statsBar"></div>
 <div class="list" id="list"></div>
 
 <script>
+
+
 const tools = [
   // ─── T1021 REMOTE SERVICES ───────────────────────────────────────────────
   {
@@ -3478,7 +3354,8 @@ function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').repla
 function escHtml(s){ return esc(s); }
 
 const platBadgeMap = {Windows:'b-blue',Linux:'b-green',macOS:'b-teal',Cloud:'b-purple','Cross-platform':'b-gray'};
-const catBadgeMap  = {'Remote Services':'b-purple','Credential Abuse':'b-coral','Session Hijacking':'b-amber',LOLBin:'b-amber','Protocol Abuse':'b-teal',Exploitation:'b-red',Phishing:'b-pink',Replication:'b-gray',Cloud:'b-purple','Tool Transfer':'b-blue','Supply Chain':'b-green',Kerberos:'b-amber'};
+const catBadgeMap  = {'Remote Services':'b-blue','Credential Abuse':'b-coral','Session Hijacking':'b-amber',LOLBin:'b-amber','Protocol Abuse':'b-teal',Exploitation:'b-red',Phishing:'b-pink',Replication:'b-gray',Cloud:'b-purple','Tool Transfer':'b-indigo','Supply Chain':'b-green',Kerberos:'b-purple'};
+const catClassMap  = {'Remote Services':'cat-remote','Credential Abuse':'cat-cred','Session Hijacking':'cat-session',LOLBin:'cat-lolbin','Protocol Abuse':'cat-protocol',Exploitation:'cat-exploit',Phishing:'cat-phishing',Replication:'cat-replication',Cloud:'cat-cloud','Tool Transfer':'cat-tool','Supply Chain':'cat-supply',Kerberos:'cat-kerberos'};
 
 // ─── Collect all APT/nation/sector values from extData ───────────────────
 function allAptEntries(){
@@ -3751,84 +3628,108 @@ function render(){
   const cf = document.getElementById('catFilter').value;
 
   let filtered = tools.filter(t => {
-    // text search — include APT names from extData
     const aptNames = ((extData[t.id]||{}).apt||[]).map(a=>a.name).join(' ');
     const hay = [t.id, t.name, t.desc, t.platform, t.category, t.attck.join(' '), aptNames].join(' ').toLowerCase();
     if(q && !hay.includes(q)) return false;
     if(pf && !t.platform.split(',').map(x=>x.trim()).includes(pf)) return false;
     if(cf && t.category !== cf) return false;
-
-    // APT filter
-    if(selectedApts.size > 0){
-      const tApts = ((extData[t.id]||{}).apt||[]).map(a => a.name);
-      if(![...selectedApts].some(sa => tApts.some(a => a.includes(sa) || sa.includes(a)))) return false;
+    if(selectedApts.size>0){
+      const tA=((extData[t.id]||{}).apt||[]).map(a=>a.name);
+      if(![...selectedApts].some(sa=>tA.some(a=>a.includes(sa)||sa.includes(a)))) return false;
     }
-    // Nation filter
-    if(selectedNations.size > 0){
-      const tNations = ((extData[t.id]||{}).apt||[]).map(a => a.nation);
-      if(![...selectedNations].some(n => tNations.includes(n))) return false;
+    if(selectedNations.size>0){
+      const tN=((extData[t.id]||{}).apt||[]).map(a=>a.nation);
+      if(![...selectedNations].some(n=>tN.includes(n))) return false;
     }
-    // Sector filter
-    if(selectedSectors.size > 0){
-      const tSectors = ((extData[t.id]||{}).apt||[]).flatMap(a => (a.sectors||'').split(',').map(s=>s.trim()));
-      if(![...selectedSectors].some(s => tSectors.includes(s))) return false;
+    if(selectedSectors.size>0){
+      const tS=((extData[t.id]||{}).apt||[]).flatMap(a=>(a.sectors||'').split(',').map(s=>s.trim()));
+      if(![...selectedSectors].some(s=>tS.includes(s))) return false;
     }
     return true;
   });
 
-  const totalDet = filtered.reduce((s,t) => s + t.detections.length, 0);
-  document.getElementById('statsBar').innerHTML = `
+  const totalDet = filtered.reduce((s,t)=>s+t.detections.length,0);
+  document.getElementById('statsBar').innerHTML=`
     <span>Showing <b>${filtered.length}</b> / <b>${tools.length}</b> techniques</span>
     <span><b>${totalDet}</b> detection patterns</span>
     <span>Tactic: <b>TA0008 Lateral Movement</b></span>
-    <span>MITRE ATT&amp;CK — Techniques + APT Intel + Telemetry + Rules</span>
   `;
 
-  const list = document.getElementById('list');
-  if(!filtered.length){ list.innerHTML='<div class="no-results">No techniques match your filters.</div>'; return; }
+  const list=document.getElementById('list');
+  if(!filtered.length){list.innerHTML='<div class="no-results">No techniques match your filters.</div>';return;}
 
-  list.innerHTML = filtered.map(t => {
-    const isExp = allExpanded || expanded[t.id];
-    const iocHtml = (t.iocs||[]).map(i => `<div><span class="ioc-type">${esc(i.type)}</span>${esc(i.val)}</div>`).join('');
-    const plats = t.platform.split(',').map(p => `<span class="badge ${platBadgeMap[p.trim()]||'b-gray'}">${p.trim()}</span>`).join('');
-    const catBadge = catBadgeMap[t.category] || 'b-gray';
-    const sigLabel = t.signed ? `<span class="badge b-green">signed</span>` : `<span class="badge b-coral">unsigned</span>`;
-    const aptCount = ((extData[t.id]||{}).apt||[]).length;
+  list.innerHTML=filtered.map(t=>{
+    const isExp=allExpanded||expanded[t.id];
+    const plats=t.platform.split(',').map(p=>`<span class="badge ${platBadgeMap[p.trim()]||'b-gray'}">${p.trim()}</span>`).join('');
+    const catBadge=catBadgeMap[t.category]||'b-gray';
+    const catCls  =catClassMap[t.category]||'';
+    const sig=t.signed
+      ?`<span class="badge b-green" title="Signed binary">✔ signed</span>`
+      :`<span class="badge b-coral" title="Unsigned">✘ unsigned</span>`;
+    const aptCnt=((extData[t.id]||{}).apt||[]).length;
+    const detCnt=t.detections.length;
+    const iocCnt=(t.iocs||[]).length;
+    const iocHtml=(t.iocs||[]).map(i=>`<div><span class="ioc-type">${esc(i.type)}</span>${esc(i.val)}</div>`).join('');
 
-    return `<div class="card${isExp?' expanded':''}" id="c_${t.id}">
+    const simRefHtml=t.attck.map(id=>`
+      <div class="ti-item" style="font-size:11.5px;padding:3px 0">
+        <span class="ti-src" style="min-width:110px">MITRE ATT&amp;CK</span>
+        <span class="ti-text"><a href="https://attack.mitre.org/techniques/${id.replace('.','/').replace('.','/') }/" target="_blank">${id} ↗</a></span>
+      </div>
+      <div class="ti-item" style="font-size:11.5px;padding:3px 0">
+        <span class="ti-src" style="min-width:110px">Atomic Red Team</span>
+        <span class="ti-text"><a href="https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/${id}/${id}.md" target="_blank">${id} atomics ↗</a></span>
+      </div>
+      <div class="ti-item" style="font-size:11.5px;padding:3px 0">
+        <span class="ti-src" style="min-width:110px">D3FEND</span>
+        <span class="ti-text"><a href="https://d3fend.mitre.org/offensive-technique/attack/${id}/" target="_blank">${id} countermeasures ↗</a></span>
+      </div>`).join('');
+
+    return `<div class="card${isExp?' expanded':''} ${catCls}" id="c_${t.id}">
       <div class="card-head" onclick="toggle('${t.id}')">
-        <div style="flex:1">
-          <div class="card-title">${esc(t.name)} <span style="font-size:11px;color:#4a4a60;font-family:var(--mono);font-weight:400;margin-left:4px">${t.id}</span></div>
-          <div class="card-desc">${esc(t.desc.substring(0,130))}${t.desc.length>130?'…':''}</div>
+        <div class="card-head-main">
+          <div class="card-title-row">
+            <span class="card-title">${esc(t.name)}</span>
+            <span class="card-id">${t.id}</span>
+          </div>
+          <div class="card-desc">${esc(t.desc.substring(0,140))}${t.desc.length>140?'…':''}</div>
           <div class="card-meta">
             ${plats}
             <span class="badge ${catBadge}">${t.category}</span>
-            ${t.attck.map(id=>`<a class="badge b-blue" href="https://attack.mitre.org/techniques/${id.replace('.','/')}/" target="_blank">${id}</a>`).join('')}
-            ${sigLabel}
-            <span class="badge b-gray">${t.detections.length} detections</span>
-            ${aptCount ? `<span class="badge b-purple">${aptCount} APT groups</span>` : ''}
+            ${t.attck.map(id=>`<a class="badge b-blue" href="https://attack.mitre.org/techniques/${id.replace('.','/') }/" target="_blank" onclick="event.stopPropagation()">${id}</a>`).join('')}
+            ${sig}
+            <span class="badge b-gray">${detCnt} det.</span>
+            ${iocCnt?`<span class="badge b-gray">${iocCnt} iocs</span>`:''}
+            ${aptCnt?`<span class="badge b-purple">${aptCnt} APTs</span>`:''}
           </div>
         </div>
-        <div class="chevron">▼</div>
+        <div class="card-head-right">
+          <div class="chevron">▾</div>
+        </div>
       </div>
       <div class="card-body">
-        <p style="font-size:13px;color:#9898b0;line-height:1.6;margin-bottom:16px">${esc(t.desc)}</p>
-        <div class="grid2">
-          <div>
-            <div class="section-label">Simulation Command</div>
-            <div class="code-block">${esc(t.sim)}</div>
+        <div class="card-body-inner">
+          <p style="font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:16px">${esc(t.desc)}</p>
+          <div class="grid2">
+            <div>
+              <div class="section-label">Simulation Command</div>
+              <div class="code-block">${esc(t.sim)}</div>
+            </div>
+            <div>
+              <div class="section-label">Simulation References</div>
+              ${simRefHtml}
+              <div class="intel-sep"></div>
+              <div class="section-label">IOC Artifacts</div>
+              <div class="ioc-list">${iocHtml||'<div style="color:var(--text3);font-size:12px">—</div>'}</div>
+            </div>
           </div>
-          <div>
-            <div class="section-label">IOC Artifacts (${(t.iocs||[]).length})</div>
-            <div class="ioc-list">${iocHtml||'<div style="color:#4a4a60;font-size:12px">—</div>'}</div>
-          </div>
+          ${buildSections(t)}
         </div>
-        ${buildSections(t)}
         <div class="footer-bar">
-          <span>MITRE ATT&amp;CK: ${t.attck.map(id=>`<a href="https://attack.mitre.org/techniques/${id.replace('.','/')}/" target="_blank" style="color:#60a5fa">${id}</a>`).join(', ')}</span>
-          <span><b>${t.detections.length}</b> detection patterns</span>
-          <span><b>${(t.iocs||[]).length}</b> IOC artifacts</span>
-          ${aptCount ? `<span><b>${aptCount}</b> APT groups</span>` : ''}
+          <span>ATT&amp;CK: ${t.attck.map(id=>`<a href="https://attack.mitre.org/techniques/${id.replace('.','/') }/" target="_blank">${id}</a>`).join(', ')}</span>
+          <span><b>${detCnt}</b> detection patterns</span>
+          <span><b>${iocCnt}</b> IOC artifacts</span>
+          ${aptCnt?`<span><b>${aptCnt}</b> APT groups</span>`:''}
         </div>
       </div>
     </div>`;
@@ -3855,6 +3756,8 @@ document.getElementById('expandAll').addEventListener('click', function(){
 // Init
 renderActiveTags();
 render();
+
+
 </script>
 </body>
 </html>
